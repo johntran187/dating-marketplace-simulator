@@ -4,6 +4,30 @@ An interactive simulation of a dating app marketplace built with Python and Stre
 
 This project models how user behavior, match formation, conversations, ghosting, and churn change under different product policies. The app lets you run simulations, toggle marketplace interventions, and view outcome metrics through a dashboard.
 
+## Installation and Usage
+
+Follow these steps to set up the environment and run the simulation locally.
+
+### Prerequisites
+* Python 3.8 or higher
+* pip package manager
+
+### Setup
+1. Clone the repository to your local machine:
+   git clone https://github.com/yourusername/dating-marketplace-simulator.git
+
+2. Navigate into the project directory:
+   cd dating-marketplace-simulator
+
+3. Install the required dependencies:
+   pip install -r requirements.txt
+
+### Launching the Application
+Start the Streamlit dashboard by executing the following command in your terminal:
+streamlit run app.py
+
+Once the server initializes, the interactive dashboard will automatically open in your default web browser at http://localhost:8501.
+
 ## Overview
 
 Dating apps are highly unequal marketplaces. A small number of users receive a large share of attention, while many users get few matches and churn quickly.
