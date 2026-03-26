@@ -1,0 +1,21 @@
+# python cache files — auto-generated, don't need to be in git
+__pycache__/
+*.py[cod]
+*.pyo
+
+# virtual environment folders
+venv/
+.venv/
+env/
+
+# data output files — these get regenerated every run
+data/*.csv
+
+# jupyter checkpoints
+.ipynb_checkpoints/
+
+# mac system files
+.DS_Store
+
+# vs code settings
+.vscode/
