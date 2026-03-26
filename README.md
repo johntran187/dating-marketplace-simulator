@@ -1,93 +1,57 @@
 # dating-marketplace-simulator
 
-An interactive simulation of a dating app marketplace built with Python and Streamlit.
+A simple, interactive simulation of a dating app marketplace using Python and Streamlit that demonstrates the impact of various design choices on user experience and platform efficiency.
 
-This project models how user behavior, match formation, conversations, ghosting, and churn change under different product policies. The app lets you run simulations, toggle marketplace interventions, and view outcome metrics through a dashboard.
+## general information
 
-## Overview
+Dating apps create very unequal markets as a few percent of all users see most of the activity. Most users do little better than this and some users may never be seen or interacted with at all.
 
-Dating apps are highly unequal marketplaces. A small number of users receive a large share of attention, while many users get few matches and churn quickly.
+This application will allow us to explore such questions as:
 
-This simulator explores questions like:
+• how does forcing users to swipe more deliberately affect overall activity? 
+• would an elo-based rating system produce higher-quality matches? 
+• would a "women go First" messaging Policy result in fewer shallow matches? 
+• do Profile boosters help or damage the ecosystem? 
+• are anti-ghosting nudge mechanisms effective in keeping conversations going longer?
 
-- What happens if users are forced to swipe more intentionally?
-- Does an Elo-style ranking system improve match quality?
-- Does a “ladies first” messaging rule reduce low-effort matches?
-- Do profile boosts help or distort the system?
-- Can anti-ghosting nudges keep conversations alive longer?
+We want to model these design options to evaluate them based upon the same Metrics we care about in our real-world apps; i.e., total number of matches generated, match rates, conversation initiation rates, ghost rates, average conversation duration, churn rates and how equally distributed matches are among all users (i.e. Gini coefficients).
 
-The goal is to simulate these product decisions and measure their effect on:
-- total matches
-- match rate
-- conversation rate
-- ghost rate
-- average conversation length
-- churn rate
-- inequality in match distribution
+## key features
 
-## Features
+### interactive dashboard
+Streamlit is used to build an interactive dashboard which allows us to:
+- select the number of users.
+- choose the length of each simulation.
+- toggle on/off marketplace interventions (Policy experiments).
+- run simulations from the left-hand menu bar.
+- view key performance indicators (KPI) across multiple categories and display plots showing trends over time.
 
-### Interactive dashboard
-Built with Streamlit, the app provides a UI to:
-- choose number of users
-- choose simulation length
-- toggle marketplace policies
-- run simulations from the sidebar
-- view KPI summaries and charts
+### experiments in design options
+There are four intervention types implemented into the simulator at present:
+1. **daily swipe limit**
+Limits how many right swipes a user may execute every 24 hours.
 
-### Policy experiments
-The simulator currently supports:
+2. **dynamic visibility ratings based upon elo scores**
+This assigns users dynamic levels of visibility in the candidate queue depending on their relative level of attractiveness to other users.
 
-- **Daily Swipe Cap**  
-  Limits how many right swipes a user can make per day.
+3. **Ladies First messaging rule**
+Similar to bumble's functionality; simulates a scenario where both parties have a limited amount of time to send one another messages. If none are exchanged, the potential connection expires.
 
-- **Elo Rating System**  
-  Assigns users dynamic visibility scores and prioritizes profiles with similar ratings.
+4. **Profile boosters**
+Increases the visibility of a certain portion of users when determining who should appear in a candidates list.
 
-- **Ladies First**  
-  Simulates a Bumble-style rule where matches expire if no message is sent within a time window.
+5. **nudges to prevent ghosting**
+Raises the probability that inactive conversations remain active for longer periods of time.
 
-- **Profile Boost**  
-  Gives a percentage of users more visibility in candidate queues.
-
-- **Anti-Ghosting Nudge**  
-  Boosts the chance a quiet conversation survives after inactivity.
-
-### Metrics and visualizations
-The dashboard displays:
-- total matches
-- match rate
-- conversation rate
-- average conversation length
-- churn rate
-- right swipe rate
-- ghost rate
-- number of “successful” conversations
-- Gini coefficient of match inequality
-
-It also includes charts for:
-- match distribution
-- active users per day
-- new matches per day
-- conversation outcomes
-- metrics by attractiveness tier
-
-## Project Structure
-
-```text
-dating-marketplace-simulator/
-├── app.py
-├── requirements.txt
-├── .gitignore
-├── data/
-│   ├── conversations.csv
-│   ├── matches.csv
-│   ├── swipe_log.csv
-│   ├── users.csv
-│   └── users_with_churn.csv
-├── notebooks/
-└── src/
-    ├── conversation_engine.py
-    ├── policy_engine.py
-    ├── swipe_engine.py
-    └── user_generator.py
+### kpis and plots
+These are displayed in two ways on the dashboard:
+- as numbers representing Metrics including:
++ total number of successful connections established during each simulation.
++ match rate = number of successful matches / total swipes made by all users.
++ conversation initiation rate = number of conversations started / total successful matches.
++ average length of each conversation = summed time spent on all conversations / count of all conversations.
++ churn rate = proportion of users who have never established a successful connection after one or more sessions using the app.
++ right swipe rate = number of right swipes executed by all users / total number of swipes executed by all users.
++ ghost rate = number of failed connections due to no response from either party / total number of successful matches.
++ count of successful conversations = number of completed conversations during the last session / total number of successful matches.
++ gini coefficient for distribution of success = measures equality among all users in terms of their success at establishing connections.
